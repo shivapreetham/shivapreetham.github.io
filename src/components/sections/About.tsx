@@ -106,19 +106,19 @@ const About = () => {
               <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a passionate Computer Science student at NIT Jamshedpur with a strong foundation 
+                  I&apos;m a passionate Computer Science student at NIT Jamshedpur with a strong foundation 
                   in full-stack web development and artificial intelligence. My journey began with a 
                   curiosity for how things work behind the scenes, which led me to explore various 
                   programming languages and technologies.
                 </p>
                 <p>
-                  Throughout my academic journey, I've maintained a stellar CGPA of 8.79 while actively 
+                  Throughout my academic journey, I&apos;ve maintained a stellar CGPA of 8.79 while actively 
                   participating in hackathons and building innovative projects. I believe in the power 
                   of technology to solve real-world problems and create meaningful impact.
                 </p>
                 <p>
                   My experience ranges from building collaborative development platforms to creating 
-                  AI-powered applications. I'm particularly interested in the intersection of web 
+                  AI-powered applications. I&apos;m particularly interested in the intersection of web 
                   development and artificial intelligence, constantly exploring new ways to integrate 
                   these technologies.
                 </p>

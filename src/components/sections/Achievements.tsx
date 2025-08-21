@@ -97,8 +97,7 @@ const Achievements = () => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 100
+        duration: 0.6
       }
     }
   };
@@ -225,7 +224,7 @@ const Achievements = () => {
               href="#contact"
               className="inline-flex items-center px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
             >
-              Let's Collaborate
+              Let&apos;s Collaborate
               <Users className="ml-2" size={20} />
             </a>
           </div>

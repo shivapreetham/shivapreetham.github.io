@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
-import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -27,7 +26,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="mb-6"
             >
-              <p className="text-lg text-muted-foreground mb-2">Hello, I'm</p>
+              <p className="text-lg text-muted-foreground mb-2">Hello, I&apos;m</p>
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
                 <span className="gradient-text">Shivapreetham H S</span>
               </h1>

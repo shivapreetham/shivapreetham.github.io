@@ -83,7 +83,7 @@ const Contact = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology
+            I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about technology
           </p>
         </motion.div>
 
@@ -147,7 +147,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
-                    placeholder="What's this about?"
+                    placeholder="What&apos;s this about?"
                   />
                 </div>
                 
@@ -255,7 +255,7 @@ const Contact = () => {
               <h4 className="font-semibold mb-3">Quick Response</h4>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 I typically respond to emails within 24 hours. For urgent matters, 
-                feel free to reach out through multiple channels. I'm always excited 
+                feel free to reach out through multiple channels. I&apos;m always excited 
                 to discuss new opportunities and collaborative projects!
               </p>
             </div>
