@@ -31,7 +31,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left px-4 sm:px-0"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -39,14 +39,14 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="mb-6"
             >
-              <p className="text-lg text-muted-foreground mb-2">Hello, I&apos;m</p>
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              <p className="text-sm sm:text-lg text-muted-foreground mb-2">Hello, I&apos;m</p>
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                 <span className="gradient-text">Shivapreetham H S</span>
               </h1>
-              <h2 className="text-xl md:text-2xl text-muted-foreground mb-4">
+              <h2 className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4">
                 Full Stack Developer & AI/ML Enthusiast
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">
                 B.Tech CSE student at NIT Jamshedpur with a passion for building innovative 
                 web applications, AI-powered solutions, and collaborative development platforms.
               </p>
@@ -57,21 +57,21 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 w-full max-w-md mx-auto lg:mx-0"
             >
               <a
                 href="#contact"
-                className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/70 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:from-primary/90 hover:to-primary/70 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 transform text-sm sm:text-base"
               >
                 Get In Touch
-                <Mail className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                <Mail className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={18} />
               </a>
               <a
                 href="#projects"
-                className="group inline-flex items-center justify-center px-8 py-4 border-2 border-primary/20 bg-background/50 backdrop-blur-sm rounded-xl hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 transform"
+                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary/20 bg-background/50 backdrop-blur-sm rounded-xl hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 font-medium shadow-lg hover:shadow-xl hover:scale-105 transform text-sm sm:text-base"
               >
                 View My Work
-                <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                <ExternalLink className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={18} />
               </a>
             </motion.div>
 
@@ -116,7 +116,7 @@ const Hero = () => {
           >
             <div className="relative">
               {/* Main profile container with enhanced styling */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
                 {/* Animated background rings */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-spin-slow"></div>
                 <div className="absolute inset-2 rounded-full bg-gradient-to-br from-secondary/20 to-primary/20 animate-pulse"></div>
@@ -140,14 +140,14 @@ const Hero = () => {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-lg backdrop-blur-sm border border-primary/20"
+                className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg backdrop-blur-sm border border-primary/20"
               >
                 CGPA: 8.79
               </motion.div>
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-4 -left-4 bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium shadow-lg backdrop-blur-sm border border-secondary/20"
+                className="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg backdrop-blur-sm border border-secondary/20"
               >
                 NIT Jamshedpur
               </motion.div>

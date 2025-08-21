@@ -111,10 +111,10 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             A showcase of my recent work in full-stack development, AI/ML, and collaborative platforms
           </p>
         </motion.div>
@@ -161,10 +161,10 @@ const Projects = () => {
                 </div>
 
                 {/* Project Details */}
-                <div className="lg:w-1/2 p-8">
+                <div className="lg:w-1/2 p-4 sm:p-6 lg:p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                      <Calendar size={16} />
+                    <div className="flex items-center space-x-2 text-xs sm:text-sm text-muted-foreground">
+                      <Calendar size={14} />
                       <span>{project.date}</span>
                     </div>
                     <div className="flex space-x-2">
@@ -175,7 +175,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
                         >
-                          <Github size={20} />
+                          <Github size={18} />
                         </a>
                       )}
                       {project.links.live && (
@@ -185,25 +185,25 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
                         >
-                          <ExternalLink size={20} />
+                          <ExternalLink size={18} />
                         </a>
                       )}
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-primary font-medium mb-4">{project.subtitle}</p>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-primary font-medium mb-3 sm:mb-4 text-sm sm:text-base">{project.subtitle}</p>
+                  <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                     {project.description}
                   </p>
 
                   {/* Key Highlights */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Key Features:</h4>
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {project.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start space-x-2 text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <li key={idx} className="flex items-start space-x-2 text-xs sm:text-sm text-muted-foreground">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0" />
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -212,12 +212,12 @@ const Projects = () => {
 
                   {/* Tech Stack */}
                   <div>
-                    <h4 className="font-semibold mb-3">Tech Stack:</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tech Stack:</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-secondary/70 text-sm rounded-full border border-border/50"
+                          className="px-2 sm:px-3 py-1 bg-secondary/70 text-xs sm:text-sm rounded-full border border-border/50"
                         >
                           {tech}
                         </span>
