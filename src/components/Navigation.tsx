@@ -2,22 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
   const navItems = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
-    { href: "#achievements", label: "Achievements" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -27,14 +23,14 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-bold gradient-text"
+            className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
           >
             Shivapreetham H S
           </motion.div>
@@ -48,31 +44,19 @@ const Navigation = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+                className="text-gray-300 hover:text-white transition-colors duration-200 relative group font-medium"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden flex items-center space-x-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-secondary hover:bg-accent transition-colors"
+              className="p-2 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -84,7 +68,7 @@ const Navigation = () => {
       <motion.div
         initial={false}
         animate={{ height: isOpen ? "auto" : 0 }}
-        className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-b border-border"
+        className="md:hidden overflow-hidden bg-black/95 backdrop-blur-md border-b border-gray-800"
       >
         <div className="px-4 py-4 space-y-3">
           {navItems.map((item) => (
@@ -92,7 +76,7 @@ const Navigation = () => {
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+              className="block text-gray-300 hover:text-white transition-colors py-2 font-medium"
               whileHover={{ x: 10 }}
             >
               {item.label}

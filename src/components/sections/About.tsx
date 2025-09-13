@@ -1,151 +1,329 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Calendar, Award } from "lucide-react";
+import { Code, Brain, Globe, User, Award, Target, TrendingUp, Star } from "lucide-react";
+import Image from "next/image";
 
 const About = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
+  const skills = [
+    {
+      category: "Frontend",
+      icon: Globe,
+      color: "from-blue-500 to-cyan-500",
+      technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion"]
+    },
+    {
+      category: "Backend",
+      icon: Code,
+      color: "from-purple-500 to-pink-500",
+      technologies: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Prisma"]
+    },
+    {
+      category: "AI/ML",
+      icon: Brain,
+      color: "from-green-500 to-emerald-500",
+      technologies: ["Python", "OpenCV", "MediaPipe", "HuggingFace", "scikit-learn"]
+    }
+  ];
+
+  const stats = [
+    { label: "Active Users", value: "500+", icon: User },
+    { label: "Projects Built", value: "15+", icon: Target },
+    { label: "Hackathon Wins", value: "3", icon: Award },
+    { label: "GitHub Stars", value: "50+", icon: Star }
+  ];
+
+  const profiles = [
+    {
+      platform: "GitHub",
+      image: "/profiles/github-profile.png",
+      description: "Open source contributions and project repositories"
+    },
+    {
+      platform: "LeetCode",
+      image: "/profiles/leetcode-profile.png",
+      description: "Problem solving and algorithmic skills"
+    },
+    {
+      platform: "CodeForces",
+      image: "/profiles/codeforces-profile.png",
+      description: "Competitive programming achievements"
+    }
+  ];
 
   return (
-    <section id="about" className="py-20 bg-secondary/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 bg-black relative">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full" style={{
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
+          backgroundSize: '60px 60px'
+        }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Section Header */}
         <motion.div
-          initial="initial"
-          whileInView="animate"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeInUp}
-          className="text-center mb-12 sm:mb-16 px-4"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Passionate computer science student with a strong foundation in full-stack development and AI/ML
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full mb-6"
+          >
+            <User className="w-5 h-5 text-blue-400" />
+            <span className="text-sm font-medium text-blue-300">About Me</span>
+          </motion.div>
+          
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            Passionate About Technology
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Computer Science student with a drive for innovation, creating solutions that impact real users
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Education & Info */}
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          {/* About Text */}
           <motion.div
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            variants={fadeInUp}
-            className="space-y-6 sm:space-y-8"
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
-            <div>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Education & Background</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">My Journey</h3>
+            
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+              <p>
+                I'm a Computer Science student at NIT Jamshedpur with a passion for building 
+                scalable web applications and exploring cutting-edge AI/ML technologies. My journey 
+                in tech has been driven by curiosity and the desire to solve real-world problems.
+              </p>
               
-              {/* Current Education */}
-              <div className="bg-card border border-border rounded-lg p-4 sm:p-6 mb-6">
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <GraduationCap className="text-primary" size={20} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-base sm:text-lg mb-1">
-                      B.Tech in Computer Science & Engineering
-                    </h4>
-                    <p className="text-primary font-medium mb-2 text-sm sm:text-base">National Institute of Technology Jamshedpur</p>
-                    <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-muted-foreground text-xs sm:text-sm">
-                      <span className="flex items-center space-x-1">
-                        <Calendar size={14} />
-                        <span>Aug 2023 - Present</span>
-                      </span>
-                      <span className="flex items-center space-x-1">
-                        <MapPin size={14} />
-                        <span>Jamshedpur, Jharkhand</span>
-                      </span>
-                      <span className="flex items-center space-x-1">
-                        <Award size={14} />
-                        <span>CGPA: 8.79</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p>
+                With experience in full-stack development, I've built platforms serving hundreds of users, 
+                won hackathons, and contributed to open-source projects. I believe in the power of 
+                technology to transform lives and communities.
+              </p>
+              
+              <p>
+                When I'm not coding, you'll find me exploring new technologies, participating in 
+                competitive programming contests, or working on innovative AI projects that push 
+                the boundaries of what's possible.
+              </p>
+            </div>
 
-              {/* Previous Education */}
-              <div className="bg-card border border-border rounded-lg p-6">
-                <div className="flex items-start space-x-4">
-                  <div className="p-2 bg-secondary/50 rounded-lg">
-                    <GraduationCap className="text-muted-foreground" size={24} />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold mb-1">Class XII</h4>
-                    <p className="text-muted-foreground mb-2">Sri Chaitanya Nagarbhavi</p>
-                    <div className="flex items-center space-x-4 text-muted-foreground text-sm">
-                      <span className="flex items-center space-x-1">
-                        <Calendar size={16} />
-                        <span>2021 - 2023</span>
-                      </span>
-                      <span className="flex items-center space-x-1">
-                        <Award size={16} />
-                        <span>97.8%</span>
-                      </span>
-                      <span className="text-primary font-medium">JEE Mains: 99.2 Percentile</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4 pt-6">
+              {stats.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gray-900/50 border border-gray-700 rounded-xl p-4 text-center backdrop-blur-sm"
+                  >
+                    <IconComponent className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-sm text-gray-400">{stat.label}</div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Description */}
+          {/* Skills */}
           <motion.div
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">My Journey</h3>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  I&apos;m a passionate Computer Science student at NIT Jamshedpur with a strong foundation 
-                  in full-stack web development and artificial intelligence. My journey began with a 
-                  curiosity for how things work behind the scenes, which led me to explore various 
-                  programming languages and technologies.
-                </p>
-                <p>
-                  Throughout my academic journey, I&apos;ve maintained a stellar CGPA of 8.79 while actively 
-                  participating in hackathons and building innovative projects. I believe in the power 
-                  of technology to solve real-world problems and create meaningful impact.
-                </p>
-                <p>
-                  My experience ranges from building collaborative development platforms to creating 
-                  AI-powered applications. I&apos;m particularly interested in the intersection of web 
-                  development and artificial intelligence, constantly exploring new ways to integrate 
-                  these technologies.
-                </p>
-              </div>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="bg-card border border-border rounded-lg p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary mb-1">20+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Projects Completed</div>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary mb-1">3</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Hackathon Awards</div>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary mb-1">6.8M+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Users Served</div>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-3 sm:p-4 text-center">
-                <div className="text-xl sm:text-2xl font-bold text-primary mb-1">15+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Team Collaborations</div>
-              </div>
+            <h3 className="text-2xl font-bold text-white mb-6">Technical Skills</h3>
+            
+            <div className="space-y-6">
+              {skills.map((skill, index) => {
+                const IconComponent = skill.icon;
+                return (
+                  <motion.div
+                    key={skill.category}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gray-900/50 border border-gray-700 rounded-xl p-6 backdrop-blur-sm"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.color}`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <h4 className="text-xl font-semibold text-white">{skill.category}</h4>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {skill.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-lg border border-gray-600"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
+
+        {/* Coding Profiles Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">Coding Profiles</h3>
+            <p className="text-gray-300">My presence across various coding platforms</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {profiles.map((profile, index) => (
+              <motion.div
+                key={profile.platform}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-900/50 border border-gray-700 rounded-xl overflow-hidden backdrop-blur-sm hover:border-blue-500/50 transition-all group"
+              >
+                <div className="aspect-video relative bg-gray-800">
+                  <Image
+                    src={profile.image}
+                    alt={`${profile.platform} profile`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xl font-semibold text-white mb-2">{profile.platform}</h4>
+                  <p className="text-gray-400 text-sm">{profile.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* GitHub Profile Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-white mb-4">GitHub Statistics</h3>
+            <p className="text-gray-300">Comprehensive overview of my development activity</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Profile Details */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="md:col-span-2 lg:col-span-3"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/0-profile-details.svg"
+                alt="GitHub Profile Details"
+                width={800}
+                height={200}
+                className="w-full h-auto rounded-xl border border-gray-700"
+              />
+            </motion.div>
+
+            {/* Language Stats */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Image
+                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/1-repos-per-language.svg"
+                alt="Repos per Language"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded-xl border border-gray-700"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Image
+                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/2-most-commit-language.svg"
+                alt="Most Commit Language"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded-xl border border-gray-700"
+              />
+            </motion.div>
+
+            {/* Stats and Productive Time */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Image
+                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/3-stats.svg"
+                alt="GitHub Stats"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded-xl border border-gray-700"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="md:col-span-2 lg:col-span-1"
+            >
+              <Image
+                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/4-productive-time.svg"
+                alt="Productive Time"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded-xl border border-gray-700"
+              />
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
