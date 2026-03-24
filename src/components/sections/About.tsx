@@ -132,11 +132,11 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gray-900/50 border border-gray-700 rounded-xl p-4 text-center backdrop-blur-sm"
+                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-blue-500/50 rounded-xl p-5 text-center backdrop-blur-sm transition-all hover:shadow-xl hover:shadow-blue-500/10 group"
                   >
-                    <IconComponent className="w-6 h-6 text-blue-400 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-white">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                    <IconComponent className="w-7 h-7 text-blue-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                    <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{stat.value}</div>
+                    <div className="text-xs text-gray-400 mt-1 font-medium">{stat.label}</div>
                   </motion.div>
                 );
               })}
@@ -163,20 +163,20 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gray-900/50 border border-gray-700 rounded-xl p-6 backdrop-blur-sm"
+                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-gray-600 rounded-xl p-6 backdrop-blur-sm transition-all hover:shadow-xl group"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.color}`}>
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.color} shadow-lg group-hover:scale-110 transition-transform`}>
                         <IconComponent className="w-6 h-6 text-white" />
                       </div>
                       <h4 className="text-xl font-semibold text-white">{skill.category}</h4>
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {skill.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-lg border border-gray-600"
+                          className="px-3 py-1.5 bg-gray-800 text-gray-200 text-sm rounded-lg border border-gray-600 hover:border-blue-500/50 hover:bg-gray-700 transition-all"
                         >
                           {tech}
                         </span>
@@ -195,7 +195,6 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
         >
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-white mb-4">Coding Profiles</h3>
@@ -227,101 +226,6 @@ const About = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* GitHub Profile Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">GitHub Statistics</h3>
-            <p className="text-gray-300">Comprehensive overview of my development activity</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Profile Details */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="md:col-span-2 lg:col-span-3"
-            >
-              <Image
-                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/0-profile-details.svg"
-                alt="GitHub Profile Details"
-                width={800}
-                height={200}
-                className="w-full h-auto rounded-xl border border-gray-700"
-              />
-            </motion.div>
-
-            {/* Language Stats */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <Image
-                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/1-repos-per-language.svg"
-                alt="Repos per Language"
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-xl border border-gray-700"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Image
-                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/2-most-commit-language.svg"
-                alt="Most Commit Language"
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-xl border border-gray-700"
-              />
-            </motion.div>
-
-            {/* Stats and Productive Time */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Image
-                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/3-stats.svg"
-                alt="GitHub Stats"
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-xl border border-gray-700"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="md:col-span-2 lg:col-span-1"
-            >
-              <Image
-                src="https://raw.githubusercontent.com/shivapreetham/shivapreetham/main/profile-summary-card-output/nord_dark/4-productive-time.svg"
-                alt="Productive Time"
-                width={400}
-                height={300}
-                className="w-full h-auto rounded-xl border border-gray-700"
-              />
-            </motion.div>
           </div>
         </motion.div>
       </div>

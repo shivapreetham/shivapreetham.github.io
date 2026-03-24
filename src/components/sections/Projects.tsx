@@ -1,14 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Calendar, Trophy, Brain, Globe, Code, Database, ChevronLeft, ChevronRight, Users, Star, Target } from "lucide-react";
+import { ExternalLink, Github, Calendar, Trophy, Brain, Globe, Code, Database, ChevronLeft, ChevronRight, Users, Star, Target, Award, Filter, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 const Projects = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const projects = [
+    {
+      id: "nitjsr-chatbot",
+      title: "NITJSR Chatbot",
+      subtitle: "Government of Jharkhand Adopted RAG System",
+      description: "Production RAG chatbot adopted by Government of Jharkhand serving NIT Jamshedpur students. Features Cohere embeddings, Pinecone vector database, and Gemini generation with LSH-based caching.",
+      techStack: ["Python", "Cohere v3", "Pinecone", "Gemini", "MongoDB", "Redis", "Puppeteer", "FastAPI"],
+      features: [
+        "Government of Jharkhand official adoption",
+        "RAG architecture with 1024-dim Cohere embeddings",
+        "LSH-based response caching for performance",
+        "MongoDB change tracking ledger"
+      ],
+      stats: { adoption: "Govt", type: "RAG System" },
+      date: "2024",
+      images: [
+        "/nitjsr-chatbot/demo.png"
+      ],
+      links: {
+        github: "https://github.com/shivapreetham/nitjsr-chatbot"
+      },
+      category: "AI/ML",
+      impact: "Government adoption for official deployment",
+      featured: true
+    },
     {
       id: "nitjsr-hub",
       title: "NIT-JSR Hub",
@@ -24,12 +49,12 @@ const Projects = () => {
       stats: { users: "200+", type: "Full-Stack" },
       date: "2024",
       images: [
-        "/nitjsr-hub/Screenshot 2025-09-13 021058.png",
-        "/nitjsr-hub/Screenshot 2025-09-13 021201.png",
-        "/nitjsr-hub/Screenshot 2025-09-13 021237.png",
-        "/nitjsr-hub/Screenshot 2025-09-13 021318.png",
-        "/nitjsr-hub/Screenshot 2025-09-13 021417.png",
-        "/nitjsr-hub/471189846-ef1bf3c1-727d-4c54-8e46-0b990920a0f4.png"
+        "/nitjsr-hub/home-page.png",
+        "/nitjsr-hub/market-place.png",
+        "/nitjsr-hub/chat.png",
+        "/nitjsr-hub/video-calls.png",
+        "/nitjsr-hub/attendance-dashboard.png",
+        "/nitjsr-hub/architecture.png"
       ],
       links: {
         github: "https://github.com/shivapreetham/nit-jsr-hub",
@@ -37,7 +62,8 @@ const Projects = () => {
         design: "https://app.eraser.io/workspace/Apx9i6oQtdCXhSVASqn2"
       },
       category: "Platform",
-      impact: "Serving 200+ students daily"
+      impact: "Serving 200+ students daily",
+      featured: true
     },
     {
       id: "codefode",
@@ -46,7 +72,7 @@ const Projects = () => {
       description: "Real-time collaborative code editor with whiteboard integration and multi-user editing capabilities. Won 3rd place at HaXplore-IIT-BHU among 1,100+ participants.",
       techStack: ["Next.js", "TypeScript", "Express.js", "Socket.IO", "MongoDB", "Monaco Editor", "Material-UI"],
       features: [
-        "Real-time collaborative editing with conflict resolution", 
+        "Real-time collaborative editing with conflict resolution",
         "Whiteboard integration for visual collaboration",
         "Multi-language syntax highlighting",
         "Live code sharing and execution"
@@ -63,7 +89,8 @@ const Projects = () => {
         live: "https://code-fode-ai-code-editor.vercel.app/"
       },
       category: "Platform",
-      impact: "Hackathon winning solution"
+      impact: "Hackathon winning solution",
+      featured: true
     },
     {
       id: "soulsync",
@@ -80,10 +107,10 @@ const Projects = () => {
       stats: { stars: "3", type: "Computer Vision" },
       date: "2024",
       images: [
-        "/qualcomm-hack/soul-sync-team.JPG",
-        "/qualcomm-hack/Screenshot 2025-09-13 025221.png",
-        "/qualcomm-hack/Screenshot 2025-09-13 025301.png",
-        "/qualcomm-hack/Screenshot 2025-09-13 025324.png"
+        "/SOUL-SYNC-qualcomm-hack/455238344-ff21e6e6-4ae6-4e20-9aeb-be2626f7fbf9.png",
+        "/SOUL-SYNC-qualcomm-hack/soul-sync-team.JPG",
+        "/SOUL-SYNC-qualcomm-hack/476A1044.JPG",
+        "/SOUL-SYNC-qualcomm-hack/476A1079.JPG"
       ],
       links: {
         github: "https://github.com/shivapreetham/SoulSync"
@@ -106,18 +133,89 @@ const Projects = () => {
       stats: { accuracy: "94%", type: "Accessibility" },
       date: "2024",
       images: [
-        "/ishara/Screenshot 2025-04-24 153839.png",
-        "/ishara/Screenshot 2025-04-24 155836.png",
-        "/ishara/Screenshot 2025-05-01 121317.png",
-        "/ishara/Screenshot 2025-09-13 023300.png",
-        "/ishara/Screenshot 2025-09-13 023349.png",
-        "/ishara/Screenshot 2025-09-13 023402.png"
+        "/ishara/live-demo.png",
+        "/ishara/sign-language.png",
+        "/ishara/accuracy-of-predictions.png",
+        "/ishara/gemini-story-interpretation.png",
+        "/ishara/feature-index-of-points.png"
       ],
       links: {
         github: "https://github.com/shivapreetham/indian-sign-language-detection"
       },
       category: "AI/ML",
       impact: "Empowering accessibility"
+    },
+    {
+      id: "agentic-yt-video-gen",
+      title: "Agentic YouTube Video Generator",
+      subtitle: "Multi-Agent AI Pipeline on Akash Network",
+      description: "Autonomous video generation pipeline orchestrating 5 LLM agents (script, voiceover, images, music, rendering). Deployed on Akash Network with cost optimization reducing expenses from $15/day to $3/day.",
+      techStack: ["Python", "Gemini", "ElevenLabs", "Pollinations", "FFmpeg", "Akash Network", "Job Queue"],
+      features: [
+        "Multi-agent orchestration with 5 sequential steps",
+        "Cost optimization: $15/day → $3/day (80% reduction)",
+        "Job queue management preventing memory exhaustion",
+        "100+ videos generated with 99% success rate"
+      ],
+      stats: { videos: "100+", type: "Multi-Agent" },
+      date: "2024",
+      images: [
+        "/agentic-yt/demo.png"
+      ],
+      links: {
+        github: "https://github.com/shivapreetham/agentic-yt-video-gen"
+      },
+      category: "AI/ML",
+      impact: "Autonomous agent orchestration"
+    },
+    {
+      id: "soul-sync-iipa",
+      title: "Soul Sync - AI Personality Clone",
+      subtitle: "IIPA Research Paper Implementation",
+      description: "AI personality clone using RAG and multimodal fusion based on IIPA research paper. Features Big Five personality modeling, WhatsApp chat analysis (10K+ messages), and voice cloning integration.",
+      techStack: ["Python", "ChromaDB", "RAG", "HuggingFace", "Big Five Model", "Voice Cloning", "Gradio"],
+      features: [
+        "Research paper implementation (IIPA proposal)",
+        "RAG with ChromaDB vector search",
+        "Big Five personality trait modeling",
+        "WhatsApp chat import and analysis (10K+ messages)"
+      ],
+      stats: { data: "100GB+", type: "Research" },
+      date: "2024",
+      images: [
+        "/soul-sync-iipa/demo.png"
+      ],
+      links: {
+        github: "https://github.com/shivapreetham/soul-sync-iipa"
+      },
+      category: "AI/ML",
+      impact: "Research-backed personality AI"
+    },
+    {
+      id: "green-path-optimizer",
+      title: "Green Path Optimizer",
+      subtitle: "Multi-Objective TSP Solver",
+      description: "Eco-friendly route optimizer using Google OR-Tools for multi-objective optimization (time + emissions + AQI). Features constraint-based solving with Redis caching for performance.",
+      techStack: ["Python", "Google OR-Tools", "Redis", "Google Maps API", "Open-Meteo API", "FastAPI"],
+      features: [
+        "Multi-objective optimization (time, emissions, AQI)",
+        "Google OR-Tools constraint solving",
+        "External API integration (Maps, Weather)",
+        "Redis caching for route optimization"
+      ],
+      stats: { waypoints: "50+", type: "Optimization" },
+      date: "2024",
+      images: [
+        "/green-path/eco-routing.png",
+        "/green-path/order.png",
+        "/green-path/order-batching.png",
+        "/green-path/client-side-products.png"
+      ],
+      links: {
+        github: "https://github.com/shivapreetham/Green_path_optimizer"
+      },
+      category: "Platform",
+      impact: "Environmental optimization"
     },
     {
       id: "shatterbox",
@@ -210,6 +308,11 @@ const Projects = () => {
     }));
   };
 
+  const categories = ["All", "AI/ML", "Platform"];
+  const filteredProjects = selectedCategory === "All"
+    ? projects
+    : projects.filter(p => p.category === selectedCategory);
+
   return (
     <section id="projects" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -230,20 +333,48 @@ const Projects = () => {
             <Code className="w-5 h-5 text-blue-400" />
             <span className="text-sm font-medium text-blue-300">Featured Projects</span>
           </motion.div>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
             Building Digital Solutions
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
             A showcase of full-stack applications, AI/ML experiments, and platforms serving thousands of users
           </p>
+
+          {/* Category Filter */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center justify-center gap-3 flex-wrap"
+          >
+            <div className="flex items-center gap-2 text-gray-400">
+              <Filter size={16} />
+              <span className="text-sm">Filter:</span>
+            </div>
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedCategory === category
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </motion.div>
         </motion.div>
 
-        <div className="grid gap-8">
-          {projects.map((project, index) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, index) => {
             const IconComponent = getCategoryIcon(project.category);
             const currentImg = currentImageIndex[project.id] || 0;
-            
+
             return (
               <motion.div
                 key={project.id}
@@ -251,189 +382,189 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-700 overflow-hidden"
+                className="group relative bg-gradient-to-br from-gray-800 via-gray-800 to-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-700 hover:border-gray-600 overflow-hidden flex flex-col"
               >
-                <div className={`grid ${index % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-2'} gap-0`}>
-                  
-                  {/* Project Images Carousel */}
-                  <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="aspect-video lg:aspect-auto lg:h-full relative overflow-hidden bg-gray-900 min-h-[450px]">
-                      {project.images.length > 0 && (
-                        <>
-                          <Image
-                            src={project.images[currentImg]}
-                            alt={`${project.title} - Image ${currentImg + 1}`}
-                            fill
-                            className="object-contain group-hover:scale-105 transition-transform duration-700"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            style={{
-                              objectPosition: 'center'
-                            }}
-                          />
-                          
-                          {/* Image Navigation */}
-                          {project.images.length > 1 && (
-                            <>
-                              <button
-                                onClick={() => prevImage(project.id, project.images.length)}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
-                              >
-                                <ChevronLeft size={24} />
-                              </button>
-                              <button
-                                onClick={() => nextImage(project.id, project.images.length)}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
-                              >
-                                <ChevronRight size={24} />
-                              </button>
-                              
-                              {/* Image indicators */}
-                              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                                {project.images.map((_, imgIndex) => (
-                                  <button
-                                    key={imgIndex}
-                                    onClick={() => setCurrentImageIndex(prev => ({ ...prev, [project.id]: imgIndex }))}
-                                    className={`w-3 h-3 rounded-full transition-all border border-gray-500 ${ 
-                                      imgIndex === currentImg 
-                                        ? 'bg-blue-500 scale-125' 
-                                        : 'bg-gray-700 hover:bg-gray-600'
-                                    }`}
-                                  />
-                                ))}
-                              </div>
-                            </>
-                          )}
-                        </>
-                      )}
-                      
-                      {/* Category badge */}
-                      <div className="absolute top-4 left-4">
-                        <div className={`flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${getCategoryColor(project.category)} text-white text-sm font-medium shadow-lg`}>
-                          <IconComponent size={16} />
-                          <span>{project.category}</span>
-                        </div>
-                      </div>
+                {/* Featured Badge */}
+                {project.featured && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse">
+                      <Sparkles size={12} />
+                      <span>FEATURED</span>
+                    </div>
+                  </div>
+                )}
 
-                      {/* Stats badges */}
-                      <div className="absolute top-4 right-4 space-y-2">
-                        {project.stats.users && (
-                          <div className="bg-gray-800/90 backdrop-blur-sm px-3 py-2 rounded-full text-sm font-semibold text-white flex items-center gap-2 shadow-lg border border-gray-600">
-                            <Users size={16} />
-                            <span>{project.stats.users}</span>
-                          </div>
+                {/* Project Images Carousel */}
+                <div className="relative">
+                  <div className="aspect-video relative overflow-hidden bg-gray-900">
+                    {project.images.length > 0 && (
+                      <>
+                        <Image
+                          src={project.images[currentImg]}
+                          alt={`${project.title} - Image ${currentImg + 1}`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+
+                        {/* Image Navigation - Smaller buttons */}
+                        {project.images.length > 1 && (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => prevImage(project.id, project.images.length)}
+                              aria-label="Previous image"
+                              title="Previous image"
+                              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
+                            >
+                              <ChevronLeft size={16} />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => nextImage(project.id, project.images.length)}
+                              aria-label="Next image"
+                              title="Next image"
+                              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
+                            >
+                              <ChevronRight size={16} />
+                            </button>
+
+                            {/* Image indicators */}
+                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+                              {project.images.map((_, imgIndex) => (
+                                <button
+                                  key={imgIndex}
+                                  type="button"
+                                  onClick={() => setCurrentImageIndex(prev => ({ ...prev, [project.id]: imgIndex }))}
+                                  aria-label={`Go to image ${imgIndex + 1}`}
+                                  title={`Go to image ${imgIndex + 1}`}
+                                  className={`w-2 h-2 rounded-full transition-all ${
+                                    imgIndex === currentImg
+                                      ? 'bg-blue-500 scale-125'
+                                      : 'bg-gray-500 hover:bg-gray-400'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          </>
                         )}
-                        {project.stats.rank && (
-                          <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
-                            <Trophy size={16} />
-                            <span>{project.stats.rank}</span>
-                          </div>
-                        )}
-                        {project.stats.accuracy && (
-                          <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
-                            <Target size={16} />
-                            <span>{project.stats.accuracy}</span>
-                          </div>
-                        )}
-                        {project.stats.stars && (
-                          <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
-                            <Star size={16} />
-                            <span>{project.stats.stars}</span>
-                          </div>
-                        )}
+                      </>
+                    )}
+
+                    {/* Category badge */}
+                    <div className="absolute top-2 right-2">
+                      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${getCategoryColor(project.category)} text-white text-xs font-medium shadow-lg`}>
+                        <IconComponent size={12} />
+                        <span>{project.category}</span>
                       </div>
+                    </div>
+
+                    {/* Primary stat badge */}
+                    <div className="absolute bottom-2 left-2">
+                      {project.stats.adoption && (
+                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                          <Award size={12} />
+                          <span>Govt</span>
+                        </div>
+                      )}
+                      {project.stats.users && (
+                        <div className="bg-gray-800/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1 shadow-lg">
+                          <Users size={12} />
+                          <span>{project.stats.users}</span>
+                        </div>
+                      )}
+                      {project.stats.rank && (
+                        <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                          <Trophy size={12} />
+                          <span>{project.stats.rank}</span>
+                        </div>
+                      )}
+                      {project.stats.accuracy && (
+                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                          <Target size={12} />
+                          <span>{project.stats.accuracy}</span>
+                        </div>
+                      )}
+                      {project.stats.videos && (
+                        <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                          <Database size={12} />
+                          <span>{project.stats.videos}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project Details */}
+                <div className="p-5 flex flex-col flex-grow">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                      <Calendar size={12} />
+                      <span>{project.date}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      {project.links.github && (
+                        <a
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="View GitHub repository"
+                          title="View GitHub repository"
+                          className="p-2 rounded-lg bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white transition-all hover:scale-110"
+                        >
+                          <Github size={14} />
+                        </a>
+                      )}
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="View live demo"
+                          title="View live demo"
+                          className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-all hover:scale-110"
+                        >
+                          <ExternalLink size={14} />
+                        </a>
+                      )}
                     </div>
                   </div>
 
-                  {/* Project Details */}
-                  <div className={`p-8 lg:p-10 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center gap-2 text-sm text-gray-400">
-                        <Calendar size={16} />
-                        <span>{project.date}</span>
-                      </div>
-                      <div className="flex gap-3">
-                        {project.links.github && (
-                          <a
-                            href={project.links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 rounded-xl bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white transition-all hover:scale-110"
-                          >
-                            <Github size={20} />
-                          </a>
-                        )}
-                        {project.links.live && (
-                          <a
-                            href={project.links.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition-all hover:scale-110"
-                          >
-                            <ExternalLink size={20} />
-                          </a>
-                        )}
-                        {project.links.design && (
-                          <a
-                            href={project.links.design}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 rounded-xl bg-purple-600 text-white hover:bg-purple-500 transition-all hover:scale-110"
-                          >
-                            <Database size={20} />
-                          </a>
-                        )}
-                      </div>
+                  <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-blue-400 font-semibold mb-3 text-sm line-clamp-1">
+                    {project.subtitle}
+                  </p>
+                  <p className="text-gray-300 mb-4 leading-relaxed text-sm line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="mb-4">
+                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Tech Stack</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.techStack.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 bg-gray-700/50 text-gray-200 text-xs font-medium rounded-lg border border-gray-600 hover:border-blue-500/50 hover:bg-gray-700 transition-all"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 4 && (
+                        <span className="px-2.5 py-1 text-gray-400 text-xs font-medium">
+                          +{project.techStack.length - 4}
+                        </span>
+                      )}
                     </div>
+                  </div>
 
-                    <h3 className="text-2xl lg:text-3xl font-bold mb-3 text-white">
-                      {project.title}
-                    </h3>
-                    <p className="text-blue-400 font-semibold mb-6 text-lg">
-                      {project.subtitle}
-                    </p>
-                    <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                      {project.description}
-                    </p>
-
-                    {/* Impact */}
-                    <div className="mb-8">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-400 rounded-full text-sm font-semibold border border-green-500/20">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        <span>{project.impact}</span>
-                      </div>
-                    </div>
-
-                    {/* Key Features */}
-                    <div className="mb-8">
-                      <h4 className="font-bold mb-4 text-white text-lg">Key Features:</h4>
-                      <ul className="space-y-3">
-                        {project.features.slice(0, 4).map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-gray-300">
-                            <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
-                            <span className="leading-relaxed">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Tech Stack */}
-                    <div>
-                      <h4 className="font-bold mb-4 text-white text-lg">Tech Stack:</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {project.techStack.slice(0, 6).map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-4 py-2 bg-gray-700 text-gray-300 text-sm font-medium rounded-xl border border-gray-600 hover:bg-gray-600 hover:scale-105 transition-all"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.techStack.length > 6 && (
-                          <span className="px-4 py-2 text-gray-500 text-sm font-medium">
-                            +{project.techStack.length - 6} more
-                          </span>
-                        )}
-                      </div>
+                  {/* Impact badge */}
+                  <div className="mt-auto">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 text-green-400 rounded-lg text-xs font-semibold border border-green-500/20 hover:bg-green-500/20 transition-all">
+                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                      <span className="line-clamp-1">{project.impact}</span>
                     </div>
                   </div>
                 </div>

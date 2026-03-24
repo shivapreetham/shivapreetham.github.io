@@ -78,14 +78,14 @@ const Hero = () => {
             </motion.div>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
               className="text-lg text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
             >
-              Computer Science student at NIT Jamshedpur passionate about building scalable web applications and exploring AI/ML technologies. 
-              Proven track record with hackathon wins and projects serving thousands of users.
+              Computer Science student at NIT Jamshedpur specializing in <span className="text-blue-400 font-semibold">full-stack development</span> and <span className="text-blue-400 font-semibold">AI/ML systems</span>.
+              Built RAG chatbot adopted by <span className="text-green-400 font-semibold">Government of Jharkhand</span> and won <span className="text-yellow-400 font-semibold">3rd place at HaXplore IIT-BHU</span> competing against 1,100+ teams.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -174,11 +174,11 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.4 }}
-                className="absolute -top-4 -right-4 bg-gray-800 rounded-xl shadow-lg p-4 border border-gray-700"
+                className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-blue-500/30"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-400">200+</div>
-                  <div className="text-xs text-gray-400">Active Users</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">750+</div>
+                  <div className="text-xs text-gray-300 font-medium">Production Users</div>
                 </div>
               </motion.div>
 
@@ -186,11 +186,11 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.4 }}
-                className="absolute -bottom-4 -left-4 bg-gray-800 rounded-xl shadow-lg p-4 border border-gray-700"
+                className="absolute -bottom-4 -left-4 bg-gradient-to-br from-green-600/20 to-emerald-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-green-500/30"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-400">3</div>
-                  <div className="text-xs text-gray-400">Hackathon Wins</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Govt</div>
+                  <div className="text-xs text-gray-300 font-medium">Adoption</div>
                 </div>
               </motion.div>
             </div>
