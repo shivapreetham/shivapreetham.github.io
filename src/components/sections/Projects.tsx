@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Calendar, Trophy, Brain, Globe, Code, Database, ChevronLeft, ChevronRight, Users, Star, Target, Award, Filter, Sparkles } from "lucide-react";
+import { ExternalLink, Github, Brain, Globe, Code, Filter, Sparkles, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 const Projects = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
     {
@@ -23,7 +24,7 @@ const Projects = () => {
         "MongoDB change tracking ledger"
       ],
       stats: { adoption: "Govt", type: "RAG System" },
-      date: "2024",
+      date: "2025",
       images: [
         "/RAG-chatbot/nitjsr-chatbot.png",
         "/RAG-chatbot/architecture.png",
@@ -50,7 +51,7 @@ const Projects = () => {
         "Anonymous messaging system"
       ],
       stats: { users: "200+", type: "Full-Stack" },
-      date: "2024",
+      date: "2025",
       images: [
         "/nitjsr-hub/home-page.png",
         "/nitjsr-hub/market-place.png",
@@ -83,9 +84,9 @@ const Projects = () => {
       stats: { rank: "3rd/1,100+", type: "Collaborative Tool" },
       date: "2025",
       images: [
-        "/haxplore/Screenshot 2025-09-13 021658.png",
-        "/haxplore/Screenshot 2025-09-13 021806.png",
-        "/haxplore/haxplore-code-fode-winning-team.jpg"
+        "/haxplore/haxplore-code-fode-winning-team.jpg",
+        "/haxplore/im1.png",
+        "/haxplore/im2.png"
       ],
       links: {
         github: "https://github.com/shivapreetham/CodeFode-AI-code-editor",
@@ -108,7 +109,7 @@ const Projects = () => {
         "Multiple language model backends support"
       ],
       stats: { stars: "3", type: "Computer Vision" },
-      date: "2024",
+      date: "2025",
       images: [
         "/SOUL-SYNC-qualcomm-hack/455238344-ff21e6e6-4ae6-4e20-9aeb-be2626f7fbf9.png",
         "/SOUL-SYNC-qualcomm-hack/soul-sync-team.JPG",
@@ -136,8 +137,8 @@ const Projects = () => {
       stats: { accuracy: "94%", type: "Accessibility" },
       date: "2024",
       images: [
+        "/ishara/1.png",
         "/ishara/live-demo.png",
-        "/ishara/sign-language.png",
         "/ishara/accuracy-of-predictions.png",
         "/ishara/gemini-story-interpretation.png",
         "/ishara/feature-index-of-points.png"
@@ -161,7 +162,7 @@ const Projects = () => {
         "100+ videos generated with 99% success rate"
       ],
       stats: { videos: "100+", type: "Multi-Agent" },
-      date: "2024",
+      date: "2025",
       images: [
         "/agentic-yt/demo.png"
       ],
@@ -274,20 +275,6 @@ const Projects = () => {
     }
   };
 
-  const nextImage = (projectId: string, totalImages: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) + 1) % totalImages
-    }));
-  };
-
-  const prevImage = (projectId: string, totalImages: number) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) - 1 + totalImages) % totalImages
-    }));
-  };
-
   const categories = ["All", "AI/ML", "Platform"];
   const filteredProjects = selectedCategory === "All"
     ? projects
@@ -353,7 +340,6 @@ const Projects = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => {
             const IconComponent = getCategoryIcon(project.category);
-            const currentImg = currentImageIndex[project.id] || 0;
 
             return (
               <motion.div
@@ -362,190 +348,70 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-gradient-to-br from-gray-800 via-gray-800 to-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-700 hover:border-gray-600 overflow-hidden flex flex-col"
+                onClick={() => {
+                  setSelectedProject(project);
+                  setCurrentImageIndex(0);
+                }}
+                className="group relative bg-gradient-to-br from-gray-800 via-gray-800 to-gray-900 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700 hover:border-blue-500/40 overflow-hidden p-4 cursor-pointer"
               >
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse">
-                      <Sparkles size={12} />
-                      <span>FEATURED</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Project Images Carousel */}
-                <div className="relative">
-                  <div className="aspect-video relative overflow-hidden bg-gray-900">
-                    {project.images.length > 0 && (
-                      <>
-                        <Image
-                          src={project.images[currentImg]}
-                          alt={`${project.title} - Image ${currentImg + 1}`}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-700"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-
-                        {/* Image Navigation - Smaller buttons */}
-                        {project.images.length > 1 && (
-                          <>
-                            <button
-                              type="button"
-                              onClick={() => prevImage(project.id, project.images.length)}
-                              aria-label="Previous image"
-                              title="Previous image"
-                              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
-                            >
-                              <ChevronLeft size={16} />
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => nextImage(project.id, project.images.length)}
-                              aria-label="Next image"
-                              title="Next image"
-                              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm border border-gray-600"
-                            >
-                              <ChevronRight size={16} />
-                            </button>
-
-                            {/* Image indicators */}
-                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-                              {project.images.map((_, imgIndex) => (
-                                <button
-                                  key={imgIndex}
-                                  type="button"
-                                  onClick={() => setCurrentImageIndex(prev => ({ ...prev, [project.id]: imgIndex }))}
-                                  aria-label={`Go to image ${imgIndex + 1}`}
-                                  title={`Go to image ${imgIndex + 1}`}
-                                  className={`w-2 h-2 rounded-full transition-all ${
-                                    imgIndex === currentImg
-                                      ? 'bg-blue-500 scale-125'
-                                      : 'bg-gray-500 hover:bg-gray-400'
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </>
+                <div className="flex items-start gap-3">
+                  <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-gray-700 bg-gray-900 shrink-0">
+                    {project.images.length > 0 ? (
+                      <Image
+                        src={project.images[0]}
+                        alt={`${project.title} icon`}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <IconComponent size={20} className="text-blue-400" />
+                      </div>
                     )}
+                  </div>
 
-                    {/* Category badge */}
-                    <div className="absolute top-2 right-2">
-                      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${getCategoryColor(project.category)} text-white text-xs font-medium shadow-lg`}>
-                        <IconComponent size={12} />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-2 mb-1.5">
+                      <h3 className="text-base font-bold text-white line-clamp-1">{project.title}</h3>
+                      <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r ${getCategoryColor(project.category)} text-white text-[10px] font-medium shrink-0`}>
+                        <IconComponent size={10} />
                         <span>{project.category}</span>
                       </div>
                     </div>
-
-                    {/* Primary stat badge */}
-                    <div className="absolute bottom-2 left-2">
-                      {project.stats.adoption && (
-                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                          <Award size={12} />
-                          <span>Govt</span>
-                        </div>
-                      )}
-                      {project.stats.users && (
-                        <div className="bg-gray-800/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1 shadow-lg">
-                          <Users size={12} />
-                          <span>{project.stats.users}</span>
-                        </div>
-                      )}
-                      {project.stats.rank && (
-                        <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                          <Trophy size={12} />
-                          <span>{project.stats.rank}</span>
-                        </div>
-                      )}
-                      {project.stats.accuracy && (
-                        <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                          <Target size={12} />
-                          <span>{project.stats.accuracy}</span>
-                        </div>
-                      )}
-                      {project.stats.videos && (
-                        <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                          <Database size={12} />
-                          <span>{project.stats.videos}</span>
-                        </div>
-                      )}
-                    </div>
+                    <p className="text-sm text-gray-300 leading-relaxed line-clamp-2">{project.description}</p>
                   </div>
                 </div>
 
-                {/* Project Details */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
-                      <Calendar size={12} />
-                      <span>{project.date}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      {project.links.github && (
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="View GitHub repository"
-                          title="View GitHub repository"
-                          className="p-2 rounded-lg bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white transition-all hover:scale-110"
-                        >
-                          <Github size={14} />
-                        </a>
-                      )}
-                      {project.links.live && (
-                        <a
-                          href={project.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="View live demo"
-                          title="View live demo"
-                          className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-all hover:scale-110"
-                        >
-                          <ExternalLink size={14} />
-                        </a>
-                      )}
-                    </div>
+                <div className="mt-3 flex items-center justify-between text-xs text-gray-400">
+                  <span>{project.date}</span>
+                  {project.featured && (
+                    <span className="inline-flex items-center gap-1 text-yellow-400 font-semibold">
+                      <Sparkles size={11} />
+                      Featured
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-gray-700/50">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {project.techStack.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 bg-gray-800 text-gray-300 text-[10px] font-medium rounded-md border border-gray-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.techStack.length > 4 && (
+                      <span className="px-2 py-0.5 bg-gray-800 text-gray-400 text-[10px] font-medium rounded-md border border-gray-700">
+                        +{project.techStack.length - 4} more
+                      </span>
+                    )}
                   </div>
 
-                  <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-blue-400 font-semibold mb-3 text-sm line-clamp-1">
-                    {project.subtitle}
-                  </p>
-                  <p className="text-gray-300 mb-4 leading-relaxed text-sm line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div className="mb-4">
-                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Tech Stack</h4>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.techStack.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-1 bg-gray-700/50 text-gray-200 text-xs font-medium rounded-lg border border-gray-600 hover:border-blue-500/50 hover:bg-gray-700 transition-all"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.techStack.length > 4 && (
-                        <span className="px-2.5 py-1 text-gray-400 text-xs font-medium">
-                          +{project.techStack.length - 4}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Impact badge */}
-                  <div className="mt-auto">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 text-green-400 rounded-lg text-xs font-semibold border border-green-500/20 hover:bg-green-500/20 transition-all">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                      <span className="line-clamp-1">{project.impact}</span>
-                    </div>
+                  <div className="text-xs text-blue-400 font-medium group-hover:text-blue-300 transition-colors">
+                    Click to view details →
                   </div>
                 </div>
               </motion.div>
@@ -573,6 +439,211 @@ const Projects = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          onClick={() => setSelectedProject(null)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", duration: 0.5 }}
+            className="relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl border border-gray-700 max-w-7xl w-full max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              type="button"
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-gray-800/90 backdrop-blur-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-all"
+              aria-label="Close modal"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="grid md:grid-cols-2 h-full max-h-[90vh]">
+              {/* Left Side - Image Carousel */}
+              <div className="relative bg-gray-950 flex items-center justify-center p-6">
+                {selectedProject.images.length > 0 && (
+                  <div className="w-full h-full flex flex-col">
+                    <div className="relative flex-1 rounded-xl overflow-hidden border border-gray-700">
+                      <Image
+                        src={selectedProject.images[currentImageIndex]}
+                        alt={`${selectedProject.title} screenshot ${currentImageIndex + 1}`}
+                        fill
+                        className="object-contain"
+                        sizes="50vw"
+                      />
+
+                      {selectedProject.images.length > 1 && (
+                        <>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex((prev) =>
+                                prev === 0 ? selectedProject.images.length - 1 : prev - 1
+                              );
+                            }}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
+                            aria-label="Previous image"
+                          >
+                            <ChevronLeft size={24} />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex((prev) =>
+                                prev === selectedProject.images.length - 1 ? 0 : prev + 1
+                              );
+                            }}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all"
+                            aria-label="Next image"
+                          >
+                            <ChevronRight size={24} />
+                          </button>
+                        </>
+                      )}
+                    </div>
+
+                    {selectedProject.images.length > 1 && (
+                      <div className="mt-4 flex justify-center gap-2">
+                        {selectedProject.images.map((_, index) => (
+                          <button
+                            type="button"
+                            key={index}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex(index);
+                            }}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              index === currentImageIndex
+                                ? 'bg-blue-500 w-8'
+                                : 'bg-gray-600 hover:bg-gray-500'
+                            }`}
+                            aria-label={`View image ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+
+                    {selectedProject.images.length > 1 && (
+                      <div className="text-center text-sm text-gray-400 mt-2">
+                        {currentImageIndex + 1} / {selectedProject.images.length}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Right Side - Content */}
+              <div className="overflow-y-auto p-6 md:p-8">
+              {/* Header */}
+              <div className="mb-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden border border-gray-700 bg-gray-900 shrink-0">
+                    {selectedProject.images.length > 0 ? (
+                      <Image
+                        src={selectedProject.images[0]}
+                        alt={selectedProject.title}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <Code size={24} className="text-blue-400" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{selectedProject.title}</h3>
+                    <p className="text-base text-gray-400">{selectedProject.subtitle}</p>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 leading-relaxed mb-4">{selectedProject.description}</p>
+
+                <div className="flex flex-wrap gap-2 items-center">
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r ${getCategoryColor(selectedProject.category)} text-white text-xs font-semibold`}>
+                    {selectedProject.category}
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-300 text-xs font-semibold">
+                    {selectedProject.stats.type}
+                  </span>
+                  <span className="text-sm text-green-400 font-medium">{selectedProject.impact}</span>
+                </div>
+              </div>
+
+              {/* Features */}
+              {selectedProject.features && (
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
+                  <ul className="space-y-2">
+                    {selectedProject.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2 text-gray-300 text-sm">
+                        <span className="text-blue-400 mt-1">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Tech Stack */}
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-white mb-3">Tech Stack</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 bg-gray-800 text-gray-200 text-sm rounded-lg border border-gray-700"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex flex-wrap gap-3">
+                {selectedProject.links.github && (
+                  <a
+                    href={selectedProject.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-800 text-gray-200 hover:bg-gray-700 transition-all font-semibold"
+                  >
+                    <Github size={18} />
+                    View Code
+                  </a>
+                )}
+                {selectedProject.links.live && (
+                  <a
+                    href={selectedProject.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:from-blue-700 hover:to-blue-600 transition-all font-semibold"
+                  >
+                    <ExternalLink size={18} />
+                    Live Demo
+                  </a>
+                )}
+              </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };

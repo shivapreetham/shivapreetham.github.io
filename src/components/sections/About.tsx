@@ -52,9 +52,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-black relative">
+    <section id="about" className="min-h-screen py-20 bg-black relative flex items-center">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="h-full w-full" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.15) 1px, transparent 0)`,
           backgroundSize: '60px 60px'
@@ -78,51 +78,44 @@ const About = () => {
             className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full mb-6"
           >
             <User className="w-5 h-5 text-blue-400" />
-            <span className="text-sm font-medium text-blue-300">About Me</span>
+            <span className="text-sm font-medium text-blue-300 font-display">About Me</span>
           </motion.div>
-          
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white font-display">
             Passionate About Technology
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base text-gray-300 max-w-2xl mx-auto">
             Computer Science student with a drive for innovation, creating solutions that impact real users
           </p>
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 mb-16">
           {/* About Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-5"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">My Journey</h3>
-            
-            <div className="space-y-4 text-gray-300 leading-relaxed">
+            <h3 className="text-lg font-bold text-white mb-3 font-display">My Journey</h3>
+
+            <div className="space-y-3 text-gray-300 leading-relaxed text-sm">
               <p>
-                I'm a Computer Science student at NIT Jamshedpur with a passion for building 
-                scalable web applications and exploring cutting-edge AI/ML technologies. My journey 
-                in tech has been driven by curiosity and the desire to solve real-world problems.
+                Computer Science student at NIT Jamshedpur with a passion for building
+                scalable web applications and exploring AI/ML technologies. My journey
+                in tech has been driven by curiosity and solving real-world problems.
               </p>
-              
+
               <p>
-                With experience in full-stack development, I've built platforms serving hundreds of users, 
-                won hackathons, and authored 3 research papers. I believe in the power of 
-                technology to transform lives and communities.
-              </p>
-              
-              <p>
-                When I'm not coding, you'll find me exploring new technologies, participating in 
-                competitive programming contests, or working on innovative AI projects that push 
-                the boundaries of what's possible.
+                Built platforms serving hundreds of users, won hackathons, and authored 3 research papers.
+                I believe in the power of technology to transform lives and communities.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
+            <div className="grid grid-cols-2 gap-2.5 pt-3">
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
@@ -132,11 +125,11 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-blue-500/50 rounded-xl p-5 text-center backdrop-blur-sm transition-all hover:shadow-xl hover:shadow-blue-500/10 group"
+                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-blue-500/50 rounded-lg p-3 text-center backdrop-blur-sm transition-all hover:shadow-xl hover:shadow-blue-500/10 group"
                   >
-                    <IconComponent className="w-7 h-7 text-blue-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
-                    <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{stat.value}</div>
-                    <div className="text-xs text-gray-400 mt-1 font-medium">{stat.label}</div>
+                    <IconComponent className="w-5 h-5 text-blue-400 mx-auto mb-1.5 group-hover:scale-110 transition-transform" />
+                    <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{stat.value}</div>
+                    <div className="text-[10px] text-gray-400 mt-0.5 font-medium">{stat.label}</div>
                   </motion.div>
                 );
               })}
@@ -149,42 +142,42 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-3"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Technical Skills</h3>
-            
-            <div className="space-y-6">
-              {skills.map((skill, index) => {
-                const IconComponent = skill.icon;
-                return (
-                  <motion.div
-                    key={skill.category}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-gray-600 rounded-xl p-6 backdrop-blur-sm transition-all hover:shadow-xl group"
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${skill.color} shadow-lg group-hover:scale-110 transition-transform`}>
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                      <h4 className="text-xl font-semibold text-white">{skill.category}</h4>
-                    </div>
+            <h3 className="text-base font-bold text-white mb-2 font-display">Technical Expertise</h3>
 
-                    <div className="flex flex-wrap gap-2">
-                      {skill.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1.5 bg-gray-800 text-gray-200 text-sm rounded-lg border border-gray-600 hover:border-blue-500/50 hover:bg-gray-700 transition-all"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                );
-              })}
+            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-lg p-3 backdrop-blur-sm">
+              <div className="space-y-3">
+                {skills.map((skill, index) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <motion.div
+                      key={skill.category}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <div className={`p-1 rounded bg-gradient-to-r ${skill.color}`}>
+                          <IconComponent className="w-3 h-3 text-white" />
+                        </div>
+                        <h4 className="text-xs font-semibold text-gray-200 font-display">{skill.category}</h4>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 pl-6">
+                        {skill.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-1.5 py-0.5 bg-gray-800/60 text-gray-300 text-[11px] rounded border border-gray-600/50 hover:border-blue-500/40 hover:bg-gray-700/60 transition-all"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -196,12 +189,12 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Coding Profiles</h3>
-            <p className="text-gray-300">My presence across various coding platforms</p>
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-white mb-2">Coding Profiles</h3>
+            <p className="text-sm text-gray-300">My presence across various coding platforms</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {profiles.map((profile, index) => (
               <motion.div
                 key={profile.platform}
@@ -209,7 +202,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-900/50 border border-gray-700 rounded-xl overflow-hidden backdrop-blur-sm hover:border-blue-500/50 transition-all group"
+                className="bg-gray-900/50 border border-gray-700 rounded-lg overflow-hidden backdrop-blur-sm hover:border-blue-500/50 transition-all group"
               >
                 <div className="aspect-video relative bg-gray-800">
                   <Image
@@ -220,9 +213,9 @@ const About = () => {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-semibold text-white mb-2">{profile.platform}</h4>
-                  <p className="text-gray-400 text-sm">{profile.description}</p>
+                <div className="p-4">
+                  <h4 className="text-base font-semibold text-white mb-1">{profile.platform}</h4>
+                  <p className="text-gray-400 text-xs">{profile.description}</p>
                 </div>
               </motion.div>
             ))}

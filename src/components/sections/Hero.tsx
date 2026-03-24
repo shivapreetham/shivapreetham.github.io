@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 relative">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="h-full w-full" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
           backgroundSize: '50px 50px'
@@ -39,8 +39,8 @@ const Hero = () => {
             </motion.div>
 
             {/* Name and title */}
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white leading-tight"
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white leading-tight font-display"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -51,8 +51,8 @@ const Hero = () => {
             </motion.h1>
 
             {/* Role */}
-            <motion.h2 
-              className="text-xl md:text-2xl text-gray-300 mb-6 font-medium"
+            <motion.h2
+              className="text-xl md:text-2xl text-gray-300 mb-6 font-medium font-display"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -85,7 +85,7 @@ const Hero = () => {
               className="text-lg text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
             >
               Computer Science student at NIT Jamshedpur specializing in <span className="text-blue-400 font-semibold">full-stack development</span> and <span className="text-blue-400 font-semibold">AI/ML systems</span>.
-              Built RAG chatbot adopted by <span className="text-green-400 font-semibold">Government of Jharkhand</span> and won <span className="text-yellow-400 font-semibold">3rd place at HaXplore IIT-BHU</span> competing against 1,100+ teams.
+              Built RAG chatbot adopted by <span className="text-green-400 font-semibold">Government of Jharkhand</span>, won <span className="text-yellow-400 font-semibold">3rd place at HaXplore IIT-BHU</span> competing against 1,100+ teams, and <span className="text-purple-400 font-semibold">authored 3 research papers</span>.
             </motion.p>
 
             {/* CTA Buttons */}
