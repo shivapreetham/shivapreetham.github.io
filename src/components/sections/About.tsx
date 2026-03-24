@@ -90,7 +90,7 @@ const About = () => {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-[1.2fr,1fr] gap-6 mb-16">
+        <div className="grid lg:grid-cols-2 gap-6 mb-16">
           {/* About Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -144,40 +144,39 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="space-y-3"
           >
-            <h3 className="text-base font-bold text-white mb-2 font-display">Technical Expertise</h3>
+            <h3 className="text-base font-bold text-white mb-3 font-display">Technical Expertise</h3>
 
-            <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 rounded-lg p-3 backdrop-blur-sm">
-              <div className="space-y-3">
-                {skills.map((skill, index) => {
-                  const IconComponent = skill.icon;
-                  return (
-                    <motion.div
-                      key={skill.category}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`p-1 rounded bg-gradient-to-r ${skill.color}`}>
-                          <IconComponent className="w-3 h-3 text-white" />
-                        </div>
-                        <h4 className="text-xs font-semibold text-gray-200 font-display">{skill.category}</h4>
+            <div className="space-y-2.5">
+              {skills.map((skill, index) => {
+                const IconComponent = skill.icon;
+                return (
+                  <motion.div
+                    key={skill.category}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-gray-700 hover:border-gray-600 rounded-lg p-2.5 backdrop-blur-sm transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className={`p-1.5 rounded-md bg-gradient-to-r ${skill.color} shadow-md`}>
+                        <IconComponent className="w-3.5 h-3.5 text-white" />
                       </div>
-                      <div className="flex flex-wrap gap-1.5 pl-6">
-                        {skill.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-1.5 py-0.5 bg-gray-800/60 text-gray-300 text-[11px] rounded border border-gray-600/50 hover:border-blue-500/40 hover:bg-gray-700/60 transition-all"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                      <h4 className="text-xs font-semibold text-white font-display tracking-wide">{skill.category}</h4>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {skill.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-gray-800/70 text-gray-300 text-[11px] rounded-md border border-gray-600/40 hover:border-blue-500/50 hover:bg-gray-700/70 hover:text-white transition-all cursor-default font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

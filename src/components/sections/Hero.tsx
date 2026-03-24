@@ -183,8 +183,8 @@ const Hero = () => {
                 className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-blue-500/30"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">hungry!!</div>
-                  <div className="text-xs text-gray-300 font-medium">Always Learning</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Upgrading</div>
+                  <div className="text-xs text-gray-300 font-medium">Creating Impact</div>
                 </div>
               </motion.div>
 
