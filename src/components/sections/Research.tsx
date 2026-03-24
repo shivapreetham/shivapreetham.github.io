@@ -27,7 +27,7 @@ const Research = () => {
       domain: "EEG Signal Processing",
       year: "2024",
       description: "Efficient transformer architecture with shallow mirror design and S3A attention mechanism for EEG analysis.",
-      coverImage: "/research-works/smtt_s3a-1.pdf",
+      coverImage: "/research-works/s3a_mechanism.pdf",
       tags: ["Transformers", "Attention Mechanism", "EEG", "Efficiency"],
       impact: "Conference Submission",
       type: "Conference"
@@ -118,7 +118,7 @@ const Research = () => {
             <p className="text-gray-400">Research under review at top-tier venues</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {submittedPapers.map((paper, index) => (
               <motion.div
                 key={paper.id}
@@ -126,69 +126,77 @@ const Research = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-700 hover:border-purple-500/50 overflow-hidden transition-all hover:shadow-2xl hover:shadow-purple-500/10 flex flex-col"
+                className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-purple-500/50 overflow-hidden transition-all hover:shadow-xl hover:shadow-purple-500/10 flex flex-col"
               >
-                <div className="relative bg-gray-900 p-6 flex items-center justify-center min-h-[200px]">
+                <div className="relative bg-gray-900 p-4 flex items-center justify-center min-h-[150px]">
                   <div className="relative w-full h-full flex items-center justify-center">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5" />
-                    <Image
-                      src={paper.coverImage}
-                      alt={paper.title}
-                      width={300}
-                      height={200}
-                      className="relative rounded-lg object-contain max-h-[180px] w-auto group-hover:scale-105 transition-transform duration-500"
-                      style={{ filter: 'brightness(0.95)' }}
-                    />
+                    {paper.coverImage.toLowerCase().endsWith(".pdf") ? (
+                      <iframe
+                        src={`${paper.coverImage}#toolbar=0&navpanes=0&scrollbar=0`}
+                        title={`${paper.title} preview`}
+                        className="relative rounded-md w-full max-w-[260px] h-[130px] border border-gray-700 bg-gray-800"
+                      />
+                    ) : (
+                      <Image
+                        src={paper.coverImage}
+                        alt={paper.title}
+                        width={300}
+                        height={200}
+                        className="relative rounded-md object-contain max-h-[130px] w-auto group-hover:scale-105 transition-transform duration-500"
+                        style={{ filter: 'brightness(0.95)' }}
+                      />
+                    )}
                   </div>
 
-                  <div className="absolute top-4 right-4">
-                    <div className="px-3 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg">
+                  <div className="absolute top-3 right-3">
+                    <div className="px-2.5 py-1 bg-purple-600 text-white text-[10px] font-bold rounded-full shadow-lg">
                       {paper.type}
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-start justify-between mb-3">
+                <div className="p-4 flex flex-col flex-grow">
+                  <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <div className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                        <FileText className="w-4 h-4 text-purple-400" />
+                      <div className="p-1.5 rounded-md bg-purple-500/10 border border-purple-500/20">
+                        <FileText className="w-3.5 h-3.5 text-purple-400" />
                       </div>
-                      <div className="text-xs text-gray-400">{paper.domain}</div>
+                      <div className="text-[11px] text-gray-400">{paper.domain}</div>
                     </div>
-                    <span className="text-xs text-gray-500">{paper.year}</span>
+                    <span className="text-[11px] text-gray-500">{paper.year}</span>
                   </div>
 
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-semibold rounded-full border border-yellow-500/20 mb-3 self-start">
+                  <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-yellow-500/10 text-yellow-400 text-[10px] font-semibold rounded-full border border-yellow-500/20 mb-2 self-start">
                     <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse" />
                     {paper.status}
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors line-clamp-2">
+                  <h3 className="text-base font-bold text-white mb-1.5 group-hover:text-purple-400 transition-colors line-clamp-2">
                     {paper.title}
                   </h3>
 
-                  <div className="text-blue-400 font-semibold text-sm mb-3">
+                  <div className="text-blue-400 font-semibold text-xs mb-2">
                     {paper.venue}
                   </div>
 
-                  <p className="text-gray-300 mb-4 leading-relaxed text-sm line-clamp-3">
+                  <p className="text-gray-300 mb-3 leading-relaxed text-xs line-clamp-3">
                     {paper.description}
                   </p>
 
-                  <div className="mb-4">
-                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">Research Areas</h4>
+                  <div className="mb-3">
+                    <h4 className="text-[10px] font-semibold text-gray-400 mb-1.5 uppercase tracking-wider">Research Areas</h4>
                     <div className="flex flex-wrap gap-1.5">
                       {paper.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-1 bg-gray-700/50 text-gray-200 text-xs font-medium rounded-lg border border-gray-600 hover:border-purple-500/50 hover:bg-gray-700 transition-all"
+                          className="px-2 py-0.5 bg-gray-700/50 text-gray-200 text-[10px] font-medium rounded-md border border-gray-600 hover:border-purple-500/50 hover:bg-gray-700 transition-all"
                         >
                           {tag}
                         </span>
                       ))}
                       {paper.tags.length > 3 && (
-                        <span className="px-2.5 py-1 text-gray-400 text-xs font-medium">
+                        <span className="px-2 py-0.5 text-gray-400 text-[10px] font-medium">
                           +{paper.tags.length - 3}
                         </span>
                       )}
@@ -196,8 +204,8 @@ const Research = () => {
                   </div>
 
                   <div className="mt-auto">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-500/10 text-purple-400 rounded-lg text-xs font-semibold border border-purple-500/20">
-                      <Zap className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-md text-[10px] font-semibold border border-purple-500/20">
+                      <Zap className="w-3 h-3" />
                       {paper.impact}
                     </div>
                   </div>
@@ -218,7 +226,7 @@ const Research = () => {
             <p className="text-gray-400">Current research projects in computer vision and medical imaging</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {ongoingResearch.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -226,20 +234,20 @@ const Research = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 rounded-xl p-6 transition-all hover:shadow-xl hover:shadow-blue-500/10 group"
+                className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm border border-gray-700 hover:border-blue-500/50 rounded-lg p-4 transition-all hover:shadow-lg hover:shadow-blue-500/10 group"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:scale-110 transition-transform">
-                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="p-2 rounded-md bg-blue-500/10 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                    <TrendingUp className="w-4 h-4 text-blue-400" />
                   </div>
-                  <div className="text-xs text-gray-400 font-medium">{project.domain}</div>
+                  <div className="text-[11px] text-gray-400 font-medium">{project.domain}</div>
                 </div>
 
-                <h4 className="text-lg font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                <h4 className="text-base font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h4>
 
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <p className="text-xs text-gray-400 leading-relaxed">
                   {project.description}
                 </p>
               </motion.div>

@@ -41,35 +41,6 @@ const Achievements = () => {
           description: "Demonstrated strong algorithmic thinking and problem-solving skills"
         }
       ]
-    },
-    {
-      category: "Leadership & Experience",
-      icon: Users,
-      color: "text-green-500",
-      bgColor: "bg-green-500/10",
-      items: [
-        {
-          title: "Official Web Team, NIT Jamshedpur",
-          position: "Core Developer",
-          details: "Serving 6.8 million+ users",
-          date: "Jan 2024 - Present",
-          description: "Maintained institute website, built faculty portfolios, contributed 20+ merged PRs"
-        },
-        {
-          title: "Industry & Alumni Relations Cell",
-          position: "Web Lead",
-          details: "Managing alumni database and outreach",
-          date: "Aug 2024 - Present",
-          description: "Leading a team of 6 members for alumni engagement initiatives"
-        },
-        {
-          title: "NSS NIT Jamshedpur",
-          position: "Web Developer",
-          details: "Team of 15+ developers",
-          date: "2024 - Present",
-          description: "Developed key modules for landing pages, event management, and volunteer coordination"
-        }
-      ]
     }
   ];
 
@@ -77,7 +48,7 @@ const Achievements = () => {
     { label: "Hackathon Wins", value: "3", icon: Trophy },
     { label: "Global Rank", value: "1,370", icon: Medal },
     { label: "Users Served", value: "6.8M+", icon: Users },
-    { label: "Team Projects", value: "15+", icon: Briefcase }
+    { label: "Projects", value: "15+", icon: Briefcase }
   ];
 
   const container = {
@@ -103,18 +74,18 @@ const Achievements = () => {
   };
 
   return (
-    <section id="achievements" className="py-20">
+    <section id="achievements" className="py-14">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Achievements & Leadership</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Recognition for technical excellence, leadership, and contribution to the developer community
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">Achievements</h2>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+            Recognition for technical excellence and competitive performance
           </p>
         </motion.div>
 
@@ -124,7 +95,7 @@ const Achievements = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
         >
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
@@ -136,15 +107,15 @@ const Achievements = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300"
+                className="bg-card border border-border rounded-lg p-4 text-center hover:shadow-lg transition-all duration-300"
               >
-                <div className="mb-4 flex justify-center">
-                  <div className="p-3 bg-primary/10 rounded-full">
-                    <IconComponent className="text-primary" size={24} />
+                <div className="mb-2.5 flex justify-center">
+                  <div className="p-2 bg-primary/10 rounded-full">
+                    <IconComponent className="text-primary" size={18} />
                   </div>
                 </div>
-                <div className="text-2xl font-bold mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-xl font-bold mb-1">{stat.value}</div>
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
               </motion.div>
             );
           })}
@@ -156,20 +127,20 @@ const Achievements = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-12"
+          className="space-y-8"
         >
           {achievements.map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (
-              <motion.div key={category.category} variants={item} className="space-y-6">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className={`p-3 ${category.bgColor} rounded-lg`}>
-                    <IconComponent className={category.color} size={28} />
+              <motion.div key={category.category} variants={item} className="space-y-4">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className={`p-2.5 ${category.bgColor} rounded-lg`}>
+                    <IconComponent className={category.color} size={22} />
                   </div>
-                  <h3 className="text-2xl font-bold">{category.category}</h3>
+                  <h3 className="text-xl font-bold">{category.category}</h3>
                 </div>
 
-                <div className="grid gap-6">
+                <div className="grid gap-4">
                   {category.items.map((achievement, index) => (
                     <motion.div
                       key={achievement.title}
@@ -178,24 +149,24 @@ const Achievements = () => {
                       viewport={{ once: true }}
                       transition={{ delay: categoryIndex * 0.2 + index * 0.1 }}
                       whileHover={{ scale: 1.02 }}
-                      className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+                      className="bg-card border border-border rounded-lg p-4 hover:shadow-lg transition-all duration-300"
                     >
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                         <div className="flex-1">
-                          <h4 className="text-lg font-semibold mb-1">{achievement.title}</h4>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-sm text-muted-foreground">
+                          <h4 className="text-base font-semibold mb-1">{achievement.title}</h4>
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-xs text-muted-foreground">
                             <span className="flex items-center space-x-1">
-                              <Award size={16} />
+                              <Award size={14} />
                               <span className="text-primary font-medium">{achievement.position}</span>
                             </span>
                             <span>{achievement.details}</span>
                           </div>
                         </div>
-                        <div className="text-sm text-muted-foreground mt-2 md:mt-0">
+                        <div className="text-xs text-muted-foreground mt-2 md:mt-0">
                           {achievement.date}
                         </div>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {achievement.description}
                       </p>
                     </motion.div>
@@ -212,20 +183,20 @@ const Achievements = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
+          className="text-center mt-10"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 border border-border">
-            <h3 className="text-xl font-bold mb-4">Ready for New Challenges</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl p-5 border border-border">
+            <h3 className="text-lg font-bold mb-3">Ready for New Challenges</h3>
+            <p className="text-sm text-muted-foreground mb-4 max-w-2xl mx-auto">
               Always looking for opportunities to contribute to innovative projects, 
               participate in hackathons, and collaborate with talented teams.
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+              className="inline-flex items-center px-6 py-2.5 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
             >
               Let&apos;s Collaborate
-              <Users className="ml-2" size={20} />
+              <Users className="ml-2" size={16} />
             </a>
           </div>
         </motion.div>

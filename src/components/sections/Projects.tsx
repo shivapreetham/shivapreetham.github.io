@@ -25,7 +25,10 @@ const Projects = () => {
       stats: { adoption: "Govt", type: "RAG System" },
       date: "2024",
       images: [
-        "/nitjsr-chatbot/demo.png"
+        "/RAG-chatbot/nitjsr-chatbot.png",
+        "/RAG-chatbot/architecture.png",
+        "/RAG-chatbot/workflow.png",
+        "/RAG-chatbot/gscc.png"
       ],
       links: {
         github: "https://github.com/shivapreetham/nitjsr-chatbot"
@@ -167,29 +170,6 @@ const Projects = () => {
       },
       category: "AI/ML",
       impact: "Autonomous agent orchestration"
-    },
-    {
-      id: "soul-sync-iipa",
-      title: "Soul Sync - AI Personality Clone",
-      subtitle: "IIPA Research Paper Implementation",
-      description: "AI personality clone using RAG and multimodal fusion based on IIPA research paper. Features Big Five personality modeling, WhatsApp chat analysis (10K+ messages), and voice cloning integration.",
-      techStack: ["Python", "ChromaDB", "RAG", "HuggingFace", "Big Five Model", "Voice Cloning", "Gradio"],
-      features: [
-        "Research paper implementation (IIPA proposal)",
-        "RAG with ChromaDB vector search",
-        "Big Five personality trait modeling",
-        "WhatsApp chat import and analysis (10K+ messages)"
-      ],
-      stats: { data: "100GB+", type: "Research" },
-      date: "2024",
-      images: [
-        "/soul-sync-iipa/demo.png"
-      ],
-      links: {
-        github: "https://github.com/shivapreetham/soul-sync-iipa"
-      },
-      category: "AI/ML",
-      impact: "Research-backed personality AI"
     },
     {
       id: "green-path-optimizer",

@@ -104,7 +104,7 @@ const Hero = () => {
               </a>
               
               <a
-                href="/Shivapreetham_s_resume_full_Stack2.pdf"
+                href="/resumes/Shivapreetham_s_resume_SDE.pdf"
                 target="_blank"
                 className="inline-flex items-center justify-center px-8 py-3 border border-gray-600 text-gray-300 rounded-xl font-semibold bg-gray-800/50 backdrop-blur-sm hover:bg-gray-700/50 hover:border-gray-500 transition-all hover:scale-105"
               >
@@ -124,6 +124,8 @@ const Hero = () => {
                 href="https://github.com/shivapreetham"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                title="GitHub Profile"
                 className="p-3 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-all hover:scale-110"
               >
                 <Github size={20} />
@@ -133,6 +135,8 @@ const Hero = () => {
                 href="https://linkedin.com/in/shivapreetham"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                title="LinkedIn Profile"
                 className="p-3 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-blue-400 transition-all hover:scale-110"
               >
                 <Linkedin size={20} />
@@ -140,6 +144,8 @@ const Hero = () => {
               
               <a
                 href="mailto:shivapreethamofficial@gmail.com"
+                aria-label="Send Email"
+                title="Send Email"
                 className="p-3 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-green-400 transition-all hover:scale-110"
               >
                 <Mail size={20} />
@@ -177,8 +183,8 @@ const Hero = () => {
                 className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-blue-500/30"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">750+</div>
-                  <div className="text-xs text-gray-300 font-medium">Production Users</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">hungry!!</div>
+                  <div className="text-xs text-gray-300 font-medium">Always Learning</div>
                 </div>
               </motion.div>
 
@@ -189,8 +195,8 @@ const Hero = () => {
                 className="absolute -bottom-4 -left-4 bg-gradient-to-br from-green-600/20 to-emerald-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-green-500/30"
               >
                 <div className="text-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Govt</div>
-                  <div className="text-xs text-gray-300 font-medium">Adoption</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">8.79</div>
+                  <div className="text-xs text-gray-300 font-medium">CGPA</div>
                 </div>
               </motion.div>
             </div>

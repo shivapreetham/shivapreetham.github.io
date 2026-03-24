@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code, Brain, Globe, User, Award, Target, TrendingUp, Star } from "lucide-react";
+import { Code, Brain, Globe, User, Award, Target } from "lucide-react";
 import Image from "next/image";
 
 const About = () => {
@@ -30,7 +30,7 @@ const About = () => {
     { label: "Active Users", value: "500+", icon: User },
     { label: "Projects Built", value: "15+", icon: Target },
     { label: "Hackathon Wins", value: "3", icon: Award },
-    { label: "GitHub Stars", value: "50+", icon: Star }
+    { label: "Research Papers", value: "3", icon: Brain }
   ];
 
   const profiles = [
@@ -110,7 +110,7 @@ const About = () => {
               
               <p>
                 With experience in full-stack development, I've built platforms serving hundreds of users, 
-                won hackathons, and contributed to open-source projects. I believe in the power of 
+                won hackathons, and authored 3 research papers. I believe in the power of 
                 technology to transform lives and communities.
               </p>
               
