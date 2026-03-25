@@ -164,7 +164,8 @@ const Projects = () => {
       stats: { videos: "100+", type: "Multi-Agent" },
       date: "2025",
       images: [
-        "/agentic-yt/demo.png"
+        "/agentic-yt/image.png",
+        "/agentic-yt/yt-upload.png"
       ],
       links: {
         github: "https://github.com/shivapreetham/agentic-yt-video-gen"

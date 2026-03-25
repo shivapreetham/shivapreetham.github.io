@@ -174,31 +174,6 @@ const Hero = () => {
                   />
                 </div>
               </div>
-
-              {/* Floating achievement cards */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1, duration: 0.4 }}
-                className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-blue-500/30"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Upgrading</div>
-                  <div className="text-xs text-gray-300 font-medium">Creating Impact</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.4 }}
-                className="absolute -bottom-4 -left-4 bg-gradient-to-br from-green-600/20 to-emerald-800/20 backdrop-blur-md rounded-xl shadow-2xl p-4 border border-green-500/30"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">8.79</div>
-                  <div className="text-xs text-gray-300 font-medium">CGPA</div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>

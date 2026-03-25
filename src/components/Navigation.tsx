@@ -31,9 +31,14 @@ const Navigation = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-display"
+            className="flex items-center gap-2"
           >
-            Shivapreetham H S
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg font-display">SH</span>
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-display">
+              Shivapreetham H S
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
