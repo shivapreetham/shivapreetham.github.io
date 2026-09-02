@@ -47,6 +47,10 @@ const config: Config = {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
+        brand: {
+          DEFAULT: "var(--brand)",
+          soft: "var(--brand-soft)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

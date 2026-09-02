@@ -8,7 +8,7 @@ const experiences = [
     location: "Princeton, New Jersey, US · Remote",
     period: "May 2026 – Jul 2026",
     current: false,
-    logo: null,
+    logo: "/expirience-logo/ets.jpg",
     description:
       "Prototyped a face-centering accessibility solution for AI-based assessment interfaces, including a research paper and working prototype targeted for a US patent filing. Led an accessibility audit of 18 AI chatbot platforms against WCAG 2.1/2.2, Section 508, and EN 301 549, informing internal ETS chatbot accessibility guidelines. Built an internal WCAG contrast-checker tool to automate color-contrast conformance checks.",
   },
@@ -41,7 +41,7 @@ const experiences = [
     location: "NIT Jamshedpur",
     period: "Feb 2025 – Present",
     current: true,
-    logo: "/expirience-logo/nit-logo.jpg",
+    logo: "/expirience-logo/web-team-nit-jsr.jpg",
     description:
       "Maintain the official NIT Jamshedpur website for critical changes. Built the NITJSR chatbot alongside fellow web team members, incorporated into the Jharkhand Government's GSCC scheme. Leading the migration of the website from MERN to Next.js.",
   },

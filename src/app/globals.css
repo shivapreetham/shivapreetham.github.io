@@ -21,6 +21,8 @@
   --input: #e5e5e5;
   --ring: #0a0a0a;
   --radius: 0.5rem;
+  --brand: #0f6b5c;
+  --brand-soft: #e6f2ef;
 }
 
 .dark {
@@ -43,6 +45,8 @@
   --border: #262626;
   --input: #262626;
   --ring: #d4d4d8;
+  --brand: #4fd8bd;
+  --brand-soft: #113330;
 }
 
 body {
@@ -58,37 +62,23 @@ html {
   scroll-behavior: smooth;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.eyebrow {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-hover {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-@media (min-width: 768px) {
-  .bg-grid-pattern {
-    background-size: 50px 50px;
-  }
+.card-hover:hover {
+  border-color: var(--brand);
+  box-shadow: 0 4px 16px -4px rgb(0 0 0 / 0.12);
+  transform: translateY(-1px);
 }
 
 /* Responsive utility classes */
