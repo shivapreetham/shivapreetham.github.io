@@ -35,13 +35,7 @@ const Skills = () => {
             <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1.5">
               {category.title}
             </h3>
-            <div className="flex flex-wrap gap-1.5">
-              {category.skills.map((skill) => (
-                <span key={skill} className="px-2 py-0.5 text-xs rounded border border-border text-muted-foreground">
-                  {skill}
-                </span>
-              ))}
-            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">{category.skills.join(" · ")}</p>
           </div>
         ))}
       </div>

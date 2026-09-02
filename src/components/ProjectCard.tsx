@@ -23,16 +23,10 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
       <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{project.description}</p>
-      <div className="flex flex-wrap gap-1.5 mt-3">
-        {project.techStack.slice(0, 4).map((tech) => (
-          <span key={tech} className="px-1.5 py-0.5 text-[11px] rounded border border-border text-muted-foreground">
-            {tech}
-          </span>
-        ))}
-        {project.techStack.length > 4 && (
-          <span className="text-[11px] text-muted-foreground">+{project.techStack.length - 4}</span>
-        )}
-      </div>
+      <p className="text-[11px] text-muted-foreground/70 mt-3">
+        {project.techStack.slice(0, 4).join(" · ")}
+        {project.techStack.length > 4 && ` +${project.techStack.length - 4}`}
+      </p>
     </Link>
   );
 }

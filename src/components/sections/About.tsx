@@ -39,16 +39,16 @@ const About = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+      <div className="flex flex-wrap mt-6 -mx-3">
         {stats.map((stat) => (
-          <div key={stat.label} className="rounded-md border border-border p-3">
+          <div key={stat.label} className="px-3 border-l border-border first:border-l-0">
             <div className="text-lg font-bold font-display text-brand tabular-nums">{stat.value}</div>
             <div className="text-[11px] text-muted-foreground mt-0.5">{stat.label}</div>
           </div>
         ))}
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 pt-6 border-t border-border">
         <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Profiles</h3>
         <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
           {profiles.map((profile) => (

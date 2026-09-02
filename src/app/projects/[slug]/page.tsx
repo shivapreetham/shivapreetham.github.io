@@ -88,13 +88,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
       <section className="mb-6">
         <h2 className="text-sm font-semibold mb-2">Stack</h2>
-        <div className="flex flex-wrap gap-1.5">
-          {project.techStack.map((tech) => (
-            <span key={tech} className="px-2 py-0.5 text-xs rounded border border-border text-muted-foreground">
-              {tech}
-            </span>
-          ))}
-        </div>
+        <p className="text-sm text-muted-foreground">{project.techStack.join(" · ")}</p>
       </section>
 
       {project.needsWriteup && (

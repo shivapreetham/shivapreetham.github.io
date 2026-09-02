@@ -65,7 +65,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
 
       <div className="flex flex-wrap gap-1.5 mb-6">
         {paper.tags.map((tag) => (
-          <span key={tag} className="px-2 py-0.5 text-xs rounded border border-border text-muted-foreground">
+          <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-muted text-muted-foreground">
             {tag}
           </span>
         ))}
