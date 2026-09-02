@@ -43,12 +43,12 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Link href="/research" className="text-xs text-muted-foreground hover:text-foreground">
+      <Link href="/research" className="text-xs text-muted-foreground hover:text-brand">
         ← All research
       </Link>
 
       <div className="flex items-center justify-between gap-2 mt-4 mb-2">
-        <span className="text-[11px] px-1.5 py-0.5 rounded border border-border text-muted-foreground">
+        <span className="text-[11px] px-1.5 py-0.5 rounded bg-brand-soft text-brand font-medium">
           {paper.status}
         </span>
         <span className="text-[11px] text-muted-foreground">{paper.year}</span>
@@ -58,7 +58,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
       <p className="text-muted-foreground text-sm mt-1.5">{paper.venue}</p>
       <p className="text-xs text-muted-foreground mt-0.5">{paper.authorPosition}</p>
       {paper.award && (
-        <p className="text-sm text-foreground font-medium mt-2">{paper.award}</p>
+        <p className="text-sm text-brand font-medium mt-2">{paper.award}</p>
       )}
 
       <p className="text-sm leading-relaxed mt-6 mb-6">{paper.description}</p>
@@ -76,7 +76,7 @@ export default async function PaperPage({ params }: { params: Promise<{ slug: st
           href={paper.doi}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-sm px-3 py-1.5 rounded border border-border hover:border-foreground/30"
+          className="inline-flex items-center text-sm px-3 py-1.5 rounded border border-border hover:border-brand hover:text-brand transition-colors"
         >
           View DOI
         </a>

@@ -9,7 +9,7 @@ const Projects = () => {
     <section className="max-w-3xl mx-auto px-4 sm:px-6 py-10 border-t border-border">
       <div className="flex items-baseline justify-between mb-4">
         <h2 className="text-lg font-semibold font-display">Featured projects</h2>
-        <Link href="/projects" className="text-xs text-muted-foreground hover:text-foreground">
+        <Link href="/projects" className="text-xs text-brand hover:opacity-80 transition-opacity">
           All projects →
         </Link>
       </div>

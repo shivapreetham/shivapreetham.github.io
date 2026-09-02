@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Link href="/projects" className="text-xs text-muted-foreground hover:text-foreground">
+      <Link href="/projects" className="text-xs text-muted-foreground hover:text-brand">
         ← All projects
       </Link>
 
@@ -122,7 +122,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             href={project.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-foreground/30"
+            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-brand hover:text-brand transition-colors"
           >
             <Github size={14} /> Code
           </a>
@@ -132,7 +132,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             href={project.links.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-foreground/30"
+            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-brand hover:text-brand transition-colors"
           >
             <ExternalLink size={14} /> Live
           </a>
@@ -142,7 +142,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             href={project.links.pypi}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-foreground/30"
+            className="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded border border-border hover:border-brand hover:text-brand transition-colors"
           >
             <Package size={14} /> PyPI
           </a>

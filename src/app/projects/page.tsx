@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+      <p className="eyebrow mb-2">Work</p>
       <h1 className="text-2xl font-bold font-display mb-2">Projects</h1>
       <p className="text-muted-foreground text-sm max-w-xl mb-8">
         Full-stack platforms, AI/ML systems, and hackathon builds — from a government-adopted RAG chatbot to a

@@ -23,6 +23,7 @@
   --radius: 0.5rem;
   --brand: #0f6b5c;
   --brand-soft: #e6f2ef;
+  --brand-foreground: #f5fbfa;
 }
 
 .dark {
@@ -47,6 +48,7 @@
   --ring: #d4d4d8;
   --brand: #4fd8bd;
   --brand-soft: #113330;
+  --brand-foreground: #04211c;
 }
 
 body {

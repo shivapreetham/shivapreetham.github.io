@@ -35,7 +35,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Name"
-              className="px-3 py-2 text-sm bg-background border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-foreground/30"
+              className="px-3 py-2 text-sm bg-background border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-brand"
             />
             <input
               type="email"
@@ -44,7 +44,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="px-3 py-2 text-sm bg-background border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-foreground/30"
+              className="px-3 py-2 text-sm bg-background border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-brand"
             />
           </div>
           <textarea
@@ -54,24 +54,24 @@ const Contact = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Message"
-            className="w-full px-3 py-2 text-sm bg-background border border-border rounded-md resize-none focus:outline-none focus:ring-1 focus:ring-foreground/30"
+            className="w-full px-3 py-2 text-sm bg-background border border-border rounded-md resize-none focus:outline-none focus:ring-1 focus:ring-brand"
           />
           <button
             type="submit"
-            className="text-sm px-4 py-2 rounded-md border border-border hover:border-foreground/30"
+            className="text-sm px-4 py-2 rounded-md bg-brand text-brand-foreground hover:opacity-90 transition-opacity"
           >
             Send
           </button>
         </form>
 
         <div className="space-y-2 text-sm">
-          <a href={`mailto:${SOCIAL_LINKS.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <a href={`mailto:${SOCIAL_LINKS.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-brand transition-colors">
             <Mail size={14} /> {SOCIAL_LINKS.email}
           </a>
-          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-brand transition-colors">
             <Github size={14} /> github.com/shivapreetham
           </a>
-          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
+          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-brand transition-colors">
             <Linkedin size={14} /> linkedin.com/in/shivapreetham
           </a>
         </div>

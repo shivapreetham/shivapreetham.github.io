@@ -18,7 +18,8 @@ const stats = [
 const About = () => {
   return (
     <section>
-      <h2 className="text-lg font-semibold font-display mb-3">About</h2>
+      <p className="eyebrow mb-2">About</p>
+      <h2 className="text-lg font-semibold font-display mb-3">Background</h2>
       <div className="space-y-3 text-sm leading-relaxed text-muted-foreground">
         <p>
           {FULL_NAME} is a Computer Science undergraduate at the National Institute of Technology (NIT) Jamshedpur,
@@ -41,7 +42,7 @@ const About = () => {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
         {stats.map((stat) => (
           <div key={stat.label} className="rounded-md border border-border p-3">
-            <div className="text-lg font-bold font-display">{stat.value}</div>
+            <div className="text-lg font-bold font-display text-brand tabular-nums">{stat.value}</div>
             <div className="text-[11px] text-muted-foreground mt-0.5">{stat.label}</div>
           </div>
         ))}
@@ -56,7 +57,7 @@ const About = () => {
               href={profile.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-brand transition-colors"
             >
               {profile.platform} <span className="text-xs">({profile.handle})</span>
             </a>

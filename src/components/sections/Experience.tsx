@@ -81,7 +81,7 @@ const Experience = () => {
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="text-sm font-semibold">{exp.title}</h3>
                 {exp.current && (
-                  <span className="text-[10px] px-1.5 py-0.5 rounded border border-border text-muted-foreground">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-brand-soft text-brand font-medium">
                     Current
                   </span>
                 )}

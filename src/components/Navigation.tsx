@@ -21,7 +21,8 @@ const Navigation = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-14">
-          <Link href="/" className="font-semibold font-display text-sm">
+          <Link href="/" className="flex items-center gap-2 font-semibold font-display text-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand" aria-hidden="true" />
             {SHORT_NAME}
           </Link>
 
@@ -30,7 +31,7 @@ const Navigation = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-brand transition-colors"
               >
                 {item.label}
               </Link>
@@ -59,7 +60,7 @@ const Navigation = () => {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-2 text-muted-foreground hover:text-foreground"
+                className="block py-2 text-muted-foreground hover:text-brand"
               >
                 {item.label}
               </Link>

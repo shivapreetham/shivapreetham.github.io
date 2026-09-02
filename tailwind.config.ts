@@ -50,6 +50,7 @@ const config: Config = {
         brand: {
           DEFAULT: "var(--brand)",
           soft: "var(--brand-soft)",
+          foreground: "var(--brand-foreground)",
         },
       },
       borderRadius: {
