@@ -1,96 +1,73 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { SHORT_NAME } from "@/lib/site";
+import ThemeToggle from "@/components/ThemeToggle";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/research", label: "Research" },
+  { href: "/resume", label: "Resume" },
+];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#research", label: "Research" },
-    { href: "#contact", label: "Contact" },
-  ];
-
-  if (!mounted) return null;
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center gap-2"
-          >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-lg font-display">SH</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-display">
-              Shivapreetham H S
-            </span>
-          </motion.div>
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="flex justify-between items-center h-14">
+          <Link href="/" className="font-semibold font-display text-sm">
+            {SHORT_NAME}
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
+          <div className="hidden md:flex items-center gap-6 text-sm">
+            {navItems.map((item) => (
+              <Link
                 key={item.href}
                 href={item.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="text-gray-300 hover:text-white transition-colors duration-200 relative group font-medium"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
-              </motion.a>
+              </Link>
             ))}
           </div>
 
-          {/* Mobile Navigation Toggle */}
-          <div className="md:hidden">
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
+              className="md:hidden p-2 text-muted-foreground hover:text-foreground"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: isOpen ? "auto" : 0 }}
-        className="md:hidden overflow-hidden bg-black/95 backdrop-blur-md border-b border-gray-800"
-      >
-        <div className="px-4 py-4 space-y-3">
-          {navItems.map((item) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="block text-gray-300 hover:text-white transition-colors py-2 font-medium"
-              whileHover={{ x: 10 }}
-            >
-              {item.label}
-            </motion.a>
-          ))}
+      {isOpen && (
+        <div className="md:hidden border-t border-border">
+          <div className="px-4 py-3 space-y-1 text-sm">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-muted-foreground hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </motion.div>
-    </motion.nav>
+      )}
+    </nav>
   );
 };
 
